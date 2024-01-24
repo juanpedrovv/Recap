@@ -1,8 +1,11 @@
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.message === 'getActiveTab') {
-    chrome.tabs.query({currentWindow: true, active: true}, function(tabs) {
-      sendResponse(tabs[0]);
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  if (changeInfo.status === 'complete' && tab.url.includes("youtube.com/watch")) {
+    const queryParameters = tab.url.split("?")[1];
+    const urlParameters = new URLSearchParams(queryParameters);
+
+    chrome.tabs.sendMessage(tabId, {
+      type: "NEW",
+      videoId: urlParameters.get("v"),
     });
-    return true; // Esto es necesario para hacer la respuesta asincrónica
   }
 });

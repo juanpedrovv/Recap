@@ -9,7 +9,7 @@
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-  }
+}
   
   .ytp-summarize-btn {
     /* Estilos para la clase ytp-summarize-btn */
@@ -17,4 +17,8 @@
   
   .summarise-btn {
     /* Estilos para la clase summarise-btn */
+  }
+
+  #output {
+    color: white;
   }

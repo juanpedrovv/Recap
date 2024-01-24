@@ -1,7 +1,7 @@
 (() => {
   let recap_interface;
   let currentVideo = "";
-
+  let outputElement = null; // Declare outputElement here
 
   const newVideoLoaded = async () => {
     const bookmarkBtnExists = document.getElementsByClassName("summarize-btn")[0];
@@ -16,9 +16,9 @@
       
       const brElement = document.createElement("br");
 
-      const outputElement = document.createElement("p");
+      outputElement = document.createElement("p"); // Initialize outputElement here
       outputElement.id = "output";
-      
+      outputElement.innerText = ""; // Reset the text of outputElement
 
       const checkElement = setInterval(() => {
         recap_interface = document.querySelector("#related.style-scope.ytd-watch-flexy");
@@ -30,40 +30,23 @@
           recap_interface.insertBefore(brElement, recap_interface.firstChild);
           recap_interface.insertBefore(summariseBtn, recap_interface.firstChild);
 
-          /* https://youtu.be/IG0J_ynkemI?t=992
-
-          Se inserta en el YT DOM como si fuera:
-
-          <button id="summarise" type="button" class="ytp-summarize-btn summarize-btn">Summarise</button>
-          <br>
-          <p id="output">Output</p>
-          
-          */
-
           summariseBtn.addEventListener("click", function(){
+
             summariseBtn.disabled = true;
             summariseBtn.innerText = "Summarising...";
             
 
-            chrome.runtime.sendMessage({message: 'getActiveTab'}, function(response) {
-              var url = response.url;
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://127.0.0.1:5000/summarize?url=" + currentVideo, true);
+            xhr.onload = function(){
+              var text = xhr.responseText;
 
-              //quiero only el video id de la url: https://www.youtube.com/watch?v=9AXP7tCI9PI
-              var videoId = url.split("v=")[1];
+              outputElement.innerText = text;
 
-              var xhr = new XMLHttpRequest();
-              xhr.open("GET", "http://127.0.0.1:5000/summarize?url=" + videoId, true);
-              xhr.onload = function(){
-                var text = xhr.responseText;
-            
-                outputElement.innerText = text;
-                
-                summariseBtn.disabled = false;
-                summariseBtn.innerText = "Summarise";
-              }
-              xhr.send();
-            });
-    
+              summariseBtn.disabled = false;
+              summariseBtn.innerText = "Summarise";
+            }
+            xhr.send();
 
           });
 
@@ -75,6 +58,8 @@
 
       }, 1000); // Comprueba cada segundo
       
+    } else if (outputElement) {
+      outputElement.innerText = ""; // Reset the text of outputElement when a new video is loaded
     }
 
   };
@@ -88,5 +73,4 @@
     }
   });
 
-  newVideoLoaded();
 })();

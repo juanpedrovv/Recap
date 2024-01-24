@@ -2,7 +2,7 @@
   "name": "Recap",
   "version": "0.1.0",
   "description": "Saving timestamps in YT videos",
-  "permissions": ["activeTab", "declarativeContent", "tabs"],
+  "permissions": ["activeTab", "declarativeContent", "tabs", "webNavigation"],
   "host_permissions": ["https://*.youtube.com/*", "http://127.0.0.1:5000/*"],
   "background": {
     "service_worker": "background.js"
