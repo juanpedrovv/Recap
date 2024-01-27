@@ -24,6 +24,8 @@
 ```
 pip install -r requirements.txt
 ```
+### Seleccionar el interprete en caso no se haya hecho automaticamente
+- https://www.youtube.com/watch?v=DB5-JiYWMNs
 
 ### Creacion de variables de entorno
 - Entrar a la carpeta recap-backend
