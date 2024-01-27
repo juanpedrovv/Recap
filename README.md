@@ -25,5 +25,5 @@ pip install -r requirements.txt
 ```
 
 ## Chrome Extension installation
-- Descargar la carpeta chrome extension
+- Descargar la carpeta recap-chrome-extension
 - Ver el siguiente video para instalarlo localmente: https://youtu.be/IG0J_ynkemI?t=1433
