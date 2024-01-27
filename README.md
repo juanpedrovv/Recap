@@ -19,6 +19,12 @@
   ```
   pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
   ```
+
+### Instalar los requirements.txt
+```
+pip install -r requirements.txt
+```
+
 ### Creacion de variables de entorno
 - Entrar a la carpeta recap-backend
 - Crear el archivo .env
@@ -33,11 +39,6 @@
   OPENAI_API_KEY=ASDNJNJ25151DS51DW8DW
   ELEVEN_LABS_API_KEY=FFDCDCDC6694D944CD
   ```
-
-### Instalar los requirements.txt
-```
-pip install -r requirements.txt
-```
 
 ## Chrome Extension installation
 - Descargar la carpeta recap-chrome-extension
