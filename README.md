@@ -19,6 +19,21 @@
   ```
   pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
   ```
+### Creacion de variables de entorno
+- Entrar a la carpeta recap-backend
+- Crear el archivo .env
+- Dentro de .env colocar lo siguiente:
+  ```
+  OPENAI_API_KEY=
+  ELEVEN_LABS_API_KEY=
+  ```
+- Acceder a Open AI y a Eleven Labs para conseguir el API Key.
+- Rellenar el archivo .env de la siguiente forma: (Notese que no se estan utilizando "")
+  ```
+  OPENAI_API_KEY=ASDNJNJ25151DS51DW8DW
+  ELEVEN_LABS_API_KEY=FFDCDCDC6694D944CD
+  ```
+
 ### Instalar los requirements.txt
 ```
 pip install -r requirements.txt
